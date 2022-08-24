@@ -26,6 +26,7 @@ public class Book {
     @NotNull
     private Integer bookQuantity;
     private Binary image;
+    @NotNull
     private String imageType;
     private long timestamp;
 

@@ -29,7 +29,6 @@ public class ImageController {
                             @Valid @NonNull @RequestParam String bookTitle, @Valid @NonNull @RequestParam String bookGenre,
                             @Valid @NonNull @RequestParam Double bookPrice) {
 
-//        String fileName = file.getOriginalFilename();
         try {
            Book book = new Book();
             book.setBookTitle(bookTitle);

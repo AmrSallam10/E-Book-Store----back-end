@@ -16,7 +16,7 @@ public class BookService {
     public List<Book> getAll() {return bookRepository.findAll();}
 
     public Book getById(String id) {
-        return bookRepository.findById(id).get();
+        return bookRepository.findById(id).orElse(null);
     }
 
     public Book saveBook(Book book) {

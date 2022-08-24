@@ -9,17 +9,27 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.Random;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 @Document
 public class Book {
 
     @Id
     private String id;
+    @NotBlank
     private String bookTitle;
+    @NotBlank
     private String bookGenre;
+    @NotNull
     private Double bookPrice;
+    @NotNull
     private Integer bookQuantity;
+    @NotNull
     private Binary image;
+    @NotNull
     private String imageType;
+    @NotBlank
     private long timestamp;
 
     public Book() {

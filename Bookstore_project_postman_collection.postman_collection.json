@@ -92,6 +92,26 @@
 			"response": []
 		},
 		{
+			"name": "Returns 404 for non-existent Book from Database",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/bookstore/6304b819ba712f15c72466d01",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookstore",
+						"6304b819ba712f15c72466d01"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Delete Book from Database",
 			"request": {
 				"method": "DELETE",
@@ -150,13 +170,42 @@
 			"response": []
 		},
 		{
+			"name": "Return 404 in case of non-existent ID for PATCH",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"bookQuantity\" : 562\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/bookstore/6304b7c4ba712f15c72466ce1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookstore",
+						"6304b7c4ba712f15c72466ce1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Update Book in Database using PUT",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n     \"bookTitle\": \"The Ruins Part 2\",\r\n        \"bookGenre\": \"Adventure\",\r\n        \"bookPrice\": 600.0,\r\n        \"bookQuantity\": 360\r\n}",
+					"raw": "{\r\n    \"bookTitle\": \"The Ruins Part 2\",\r\n    \"bookGenre\": \"Adventure\",\r\n    \"bookPrice\": 600.0,\r\n    \"bookQuantity\": 360\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -173,6 +222,35 @@
 						"api",
 						"bookstore",
 						"6304b7c4ba712f15c72466ce"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Return 404 in case of non-existent ID for PUT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookTitle\": \"The Ruins Part 2\",\r\n    \"bookGenre\": \"Adventure\",\r\n    \"bookPrice\": 600.0,\r\n    \"bookQuantity\": 360\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/bookstore/6304b7c4ba712f15c72466ce1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookstore",
+						"6304b7c4ba712f15c72466ce1"
 					]
 				}
 			},

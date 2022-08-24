@@ -35,6 +35,9 @@ public class Book {
         final int min = 1;
         int randomQuantity = rand.nextInt((max - min) +1) + min;
         this.bookQuantity = randomQuantity;
+        this.bookTitle = "New Book";
+        this.bookGenre = "Other";
+        this.bookPrice = 100.0;
         this.timestamp = System.currentTimeMillis();
     }
 

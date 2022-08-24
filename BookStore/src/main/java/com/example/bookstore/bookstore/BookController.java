@@ -3,6 +3,7 @@ package com.example.bookstore.bookstore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class BookController {
     }
 
     @PostMapping(value = {"", "/"})
-    public Book createNewBook(@RequestBody Book book) {
+    public Book createNewBook(@Valid @RequestBody Book book) {
         return bookService.saveBook(book);
     }
 
@@ -34,6 +35,24 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    public Book updateBook(@PathVariable String id, @NotNull @RequestBody Book newBook) {return bookService.updateBook(id, newBook);}
+    public Book putBook(@PathVariable String id, @Valid @NotNull @RequestBody Book newBook) {
+        
+        Book book = bookService.getById(id);
+        newBook.setId(id);
+        newBook.setImage(book.getImage());
+        newBook.setImageType(book.getImageType());
+
+        bookService.updateBook(id, newBook);
+        return newBook;
+
+    }
+
+    @PatchMapping("/{id}")
+    public Book updateBook(@PathVariable String id, @Valid @NotNull @RequestBody Book newBook) {
+        Book book = bookService.getById(id);
+        book.setBookQuantity(newBook.getBookQuantity());
+
+        return bookService.updateBook(id, book);
+    }
 
 }

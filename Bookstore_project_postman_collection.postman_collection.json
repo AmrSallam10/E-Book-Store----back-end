@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "512a3467-d365-4156-9abb-5b4157df16a5",
+		"name": "Bookstore_project_postman_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Books from the Database",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/bookstore/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookstore",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new Book to the Database",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "bookTitle",
+							"value": "Hooked ",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/omarh/Google Drive (omarhatem2002@aucegypt.edu)/CS/Agile/Development/mongo project/E-Book-Store----back-end/51DlnjccG-L._AC_SY780_.jpg"
+						},
+						{
+							"key": "bookGenre",
+							"value": "Non Fiction",
+							"type": "default"
+						},
+						{
+							"key": "bookPrice",
+							"value": "250",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/bookstore/images/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookstore",
+						"images",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Book by ID from Database",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/bookstore/6304b819ba712f15c72466d0",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookstore",
+						"6304b819ba712f15c72466d0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Book from Database",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/bookstore/6304b819ba712f15c72466d0",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookstore",
+						"6304b819ba712f15c72466d0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book Quantity in Database using PATCH",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"bookQuantity\" : 562\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/bookstore/6304b7c4ba712f15c72466ce",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookstore",
+						"6304b7c4ba712f15c72466ce"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book in Database using PUT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"bookTitle\": \"The Ruins Part 2\",\r\n        \"bookGenre\": \"Adventure\",\r\n        \"bookPrice\": 600.0,\r\n        \"bookQuantity\": 360\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/bookstore/6304b7c4ba712f15c72466ce",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookstore",
+						"6304b7c4ba712f15c72466ce"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

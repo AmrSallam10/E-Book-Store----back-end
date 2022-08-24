@@ -41,6 +41,11 @@ public class Book {
         this.timestamp = System.currentTimeMillis();
     }
 
+    public Book(Integer bookQuantity) {
+        this.bookQuantity = bookQuantity;
+        this.timestamp = System.currentTimeMillis();
+    }
+
     public Book(String id, String bookTitle, String bookGenre, Double bookPrice, Integer bookQuantity, long timestamp, MultipartFile file) throws IOException {
         this.id = id;
         this.bookTitle = bookTitle;

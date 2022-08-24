@@ -25,6 +25,7 @@ public class ImageController {
 
     @PostMapping(value = {"", "/"})
     @ResponseBody
+    // Adding a Book with its image to the database
     public ResponseEntity<Void> uploadImage(@Valid @NonNull @RequestParam(value = "image") MultipartFile file,
                             @Valid @NonNull @RequestParam String bookTitle, @Valid @NonNull @RequestParam String bookGenre,
                             @Valid @NonNull @RequestParam Double bookPrice) {

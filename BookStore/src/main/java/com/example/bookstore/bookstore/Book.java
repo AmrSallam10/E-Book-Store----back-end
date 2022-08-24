@@ -12,14 +12,15 @@ import java.util.Random;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+// Model Class for BookStore (Book)
 @Document
 public class Book {
 
     @Id
     private String id;
-    @NotBlank
+    @NotNull
     private String bookTitle;
-    @NotBlank
+    @NotNull
     private String bookGenre;
     @NotNull
     private Double bookPrice;
@@ -29,23 +30,23 @@ public class Book {
     private String imageType;
     private long timestamp;
 
+    //Default Constructor Book()
     public Book() {
         Random rand = new Random();
         final int max = 500;
         final int min = 1;
         int randomQuantity = rand.nextInt((max - min) +1) + min;
         this.bookQuantity = randomQuantity;
-        this.bookTitle = "New Book";
-        this.bookGenre = "Other";
-        this.bookPrice = 100.0;
         this.timestamp = System.currentTimeMillis();
     }
 
-    public Book(Integer bookQuantity) {
+    // Parameterized Constructor for initializing Book Quantity parameter
+     public Book(Integer bookQuantity) {
         this.bookQuantity = bookQuantity;
         this.timestamp = System.currentTimeMillis();
     }
 
+    // Parameterized Constructor for initializing all parameters of Book class
     public Book(String id, String bookTitle, String bookGenre, Double bookPrice, Integer bookQuantity, long timestamp, MultipartFile file) throws IOException {
         this.id = id;
         this.bookTitle = bookTitle;
@@ -57,6 +58,7 @@ public class Book {
 
     }
 
+    // Setter and Getters for all Book Attributes
     public String getId() {
         return id;
     }

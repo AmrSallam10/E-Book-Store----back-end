@@ -18,11 +18,11 @@ public class Book {
 
     @Id
     private String id;
-    @NotNull
+    @NotBlank
     private String bookTitle;
-    @NotNull
+    @NotBlank
     private String bookGenre;
-    @NotNull
+    @NotBlank
     private Double bookPrice;
     @NotNull
     private Integer bookQuantity;
@@ -38,12 +38,18 @@ public class Book {
         int randomQuantity = rand.nextInt((max - min) +1) + min;
         this.bookQuantity = randomQuantity;
         this.timestamp = System.currentTimeMillis();
+        this.bookTitle = "New Book";
+        this.bookGenre = "Other";
+        this.bookPrice = 100.0;
     }
 
     // Parameterized Constructor for initializing Book Quantity parameter
      public Book(Integer bookQuantity) {
         this.bookQuantity = bookQuantity;
         this.timestamp = System.currentTimeMillis();
+        this.bookTitle = "New Book";
+        this.bookGenre = "Other";
+        this.bookPrice = 100.0;
     }
 
     // Parameterized Constructor for initializing all parameters of Book class

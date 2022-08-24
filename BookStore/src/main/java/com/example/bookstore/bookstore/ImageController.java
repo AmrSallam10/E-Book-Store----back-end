@@ -26,7 +26,7 @@ public class ImageController {
 
     @PostMapping(value = {"", "/"})
     @ResponseBody
-    public void uploadImage(@Valid @NonNull @RequestParam(value = "image") MultipartFile file,
+    public ResponseEntity<Void> uploadImage(@Valid @NonNull @RequestParam(value = "image") MultipartFile file,
                             @Valid @NonNull @RequestParam String bookTitle, @Valid @NonNull @RequestParam String bookGenre,
                             @Valid @NonNull @RequestParam Double bookPrice) {
 
@@ -45,36 +45,37 @@ public class ImageController {
             e.printStackTrace();
         }
 
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Book>> getAllBooks() {
-        List<Book> books = imageRepository.findAll(); 
-        return new ResponseEntity<>(books, HttpStatus.OK);
-    }
+//    @GetMapping
+//    public ResponseEntity<List<Book>> getAllBooks() {
+//        List<Book> books = imageRepository.findAll();
+//        return new ResponseEntity<>(books, HttpStatus.OK);
+//    }
 
-    @GetMapping(path ={"/id"})
-    public ResponseEntity<Book> getBookById(String id) {
-        Book book = imageRepository.findById(id).orElse(null); 
-        if (book.equals(null)) {
-            return new ResponseEntity<>(book, HttpStatus.BAD_REQUEST);
+//    @GetMapping(path ={"/id"})
+//    public ResponseEntity<Book> getBookById(String id) {
+//        Book book = imageRepository.findById(id).orElse(null);
+//        if (book.equals(null)) {
+//            return new ResponseEntity<>(book, HttpStatus.BAD_REQUEST);
+//
+//        } else {
+//            return new ResponseEntity<>(book, HttpStatus.BAD_REQUEST);
+//        }
+//    }
 
-        } else {
-            return new ResponseEntity<>(book, HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    @PutMapping(path = {"/id"})
-    @ResponseBody
-    public void updateImage(@PathVariable("id") String id,
-                            @RequestParam Integer bookQuantity) {
-
-//        String fileName = file.getOriginalFilename();
-            Book book = imageRepository.findById(id).orElse(null);
-            book.setBookQuantity(bookQuantity);
-
-            imageRepository.save(book);
-    }
+//    @PutMapping(path = {"/id"})
+//    @ResponseBody
+//    public void updateImage(@PathVariable("id") String id,
+//                            @RequestParam Integer bookQuantity) {
+//
+////        String fileName = file.getOriginalFilename();
+//            Book book = imageRepository.findById(id).orElse(null);
+//            book.setBookQuantity(bookQuantity);
+//
+//            imageRepository.save(book);
+//    }
 
 
 

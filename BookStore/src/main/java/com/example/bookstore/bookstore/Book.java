@@ -17,9 +17,9 @@ public class Book {
 
     @Id
     private String id;
-    @NotBlank
+    @NotNull
     private String bookTitle;
-    @NotBlank
+    @NotNull
     private String bookGenre;
     @NotNull
     private Double bookPrice;
@@ -29,7 +29,6 @@ public class Book {
     private Binary image;
     @NotNull
     private String imageType;
-    @NotBlank
     private long timestamp;
 
     public Book() {

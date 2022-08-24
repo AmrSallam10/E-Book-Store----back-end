@@ -1,6 +1,8 @@
 package com.example.bookstore.bookstore;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -15,44 +17,63 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping(value = {"", "/"})
-    public List<Book> getAllBooks() {
-        return bookService.getAll();
+    public ResponseEntity<List<Book>> getAllBooks() {
+        List<Book> result = bookService.getAll();
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public Book getBookById(@PathVariable String id) {
-        return bookService.getById(id);
+    public ResponseEntity<Book> getBookById(@PathVariable String id) {
+        Book book = bookService.getById(id);
+        if(book == null)
+            return new ResponseEntity<>(book, HttpStatus.NOT_FOUND);
+        else
+            return new ResponseEntity<>(book, HttpStatus.OK);
     }
 
     @PostMapping(value = {"", "/"})
-    public Book createNewBook(@Valid @RequestBody Book book) {
-        return bookService.saveBook(book);
+    public ResponseEntity<Book> createNewBook(@Valid @RequestBody Book book) {
+        Book result = bookService.saveBook(book);
+        return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteBook(@PathVariable String id) {
+    public ResponseEntity<Void> deleteBook(@PathVariable String id) {
         bookService.deleteBook(id);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/{id}")
-    public Book putBook(@PathVariable String id, @Valid @NotNull @RequestBody Book newBook) {
+    public ResponseEntity<Book> putBook(@PathVariable String id, @Valid @NotNull @RequestBody Book newBook) {
         
         Book book = bookService.getById(id);
-        newBook.setId(id);
-        newBook.setImage(book.getImage());
-        newBook.setImageType(book.getImageType());
+        if(book == null)
+            return new ResponseEntity<>(book, HttpStatus.NOT_FOUND);
+        else {
+            newBook.setId(id);
+            newBook.setImage(book.getImage());
+            newBook.setImageType(book.getImageType());
 
-        bookService.updateBook(id, newBook);
-        return newBook;
+            Book result = bookService.updateBook(id, newBook);
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+
 
     }
 
     @PatchMapping("/{id}")
-    public Book updateBook(@PathVariable String id, @Valid @NotNull @RequestBody Book newBook) {
+    public ResponseEntity<Book> updateBook(@PathVariable String id, @Valid @NotNull @RequestBody Book newBook) {
         Book book = bookService.getById(id);
-        book.setBookQuantity(newBook.getBookQuantity());
+        if(book == null)
+            return new ResponseEntity<>(book, HttpStatus.NOT_FOUND);
+        else {
+            book.setBookQuantity(newBook.getBookQuantity());
+            Book result = bookService.updateBook(id, book);
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
 
-        return bookService.updateBook(id, book);
+
+
     }
 
 }

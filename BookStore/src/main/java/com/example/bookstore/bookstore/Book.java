@@ -17,17 +17,15 @@ public class Book {
 
     @Id
     private String id;
-    @NotNull
+    @NotBlank
     private String bookTitle;
-    @NotNull
+    @NotBlank
     private String bookGenre;
     @NotNull
     private Double bookPrice;
     @NotNull
     private Integer bookQuantity;
-    @NotNull
     private Binary image;
-    @NotNull
     private String imageType;
     private long timestamp;
 

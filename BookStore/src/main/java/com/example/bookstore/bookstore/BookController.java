@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(value = "/api/bookstore")
 public class BookController {
 

@@ -1,0 +1,6 @@
+com/example/bookstore/bookstore/BookController.class
+com/example/bookstore/bookstore/BookService.class
+com/example/bookstore/bookstore/ImageController.class
+com/example/bookstore/BookStoreApplication.class
+com/example/bookstore/bookstore/Book.class
+com/example/bookstore/bookstore/BookRepository.class

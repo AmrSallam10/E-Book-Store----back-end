@@ -1,19 +1,6 @@
 spring:
-  config:
-    activate:
-      on-profile: dev
   data:
     mongodb:
       database: BookStore
       host: localhost
       port: 27017
----
-spring:
-  config:
-    activate:
-      on-profile: dev
-    data:
-      mongodb:
-        database: ${DBNAME}
-        host: ${HOSTNAME}
-        port: ${PORTNUM}
